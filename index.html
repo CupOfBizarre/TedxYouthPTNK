@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TEDxYouth PTNK</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Federo&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap" rel="stylesheet" />
+
+    <!-- Icons & Styles -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="site-content">
+        <!-- ==================== Navbar ==================== -->
+        <div class="nav-container">
+          <nav class="nav">
+            <div class="logo">
+              <img src="TED.png" id="img-logo" alt="TED Logo" />
+            </div>
+
+            <ul class="nav-links">
+              <li><a href="#">Event</a></li>
+              <li><a href="#speakers">Speakers</a></li>
+              <li><a href="#sponsors">Sponsors</a></li>
+
+              <!-- Social Icons -->
+              <li>
+                <div class="icon-wrapper">
+                  <a href="https://www.facebook.com/tedptnk/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                </div>
+              </li>
+              <li>
+                <div class="icon-wrapper">
+                  <a href="https://www.instagram.com/tedxyouth.ptnk/m" target="_blank"><i class="fab fa-instagram"></i></a>
+                </div>
+              </li>
+
+              <!-- TEDx red logo -->
+              <li>
+                <a href="https://ted.com" target="_blank" class="ted-logo">
+                  <img src="tedx.png" id="ted-img" alt="TEDxYouthPTNK Logo" />
+                </a>
+              </li>
+
+              <!-- NEW TICKETS BUTTON -->
+              <li>
+                <a
+                  href="https://forms.gle/nj5XAaggqR2xyYnp8"
+                  target="_blank"
+                  class="cta-btn"
+                  >TICKETS</a
+                >
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- ==================== Desktop Slider ==================== -->
+        <div class="desktop-slider">
+          <div class="image-wrapper">
+            <div id="caption" class="caption">...</div>
+
+            <div class="img-parent">
+              <div
+                class="img"
+                style="background-image: url(pokemon/1.JPG)"
+                onclick="openModal(1)"
+                onmouseover="hoverImage(1)"
+                onmouseout="hideCaption()"
+              ></div>
+              <div
+                class="img"
+                style="background-image: url(pokemon/2.JPG)"
+                onclick="openModal(2)"
+                onmouseover="hoverImage(2)"
+                onmouseout="hideCaption()"
+              ></div>
+              <div
+                class="img"
+                style="background-image: url(pokemon/3.JPG)"
+                onclick="openModal(3)"
+                onmouseover="hoverImage(3)"
+                onmouseout="hideCaption()"
+              ></div>
+              <div
+                class="img"
+                style="background-image: url(pokemon/4.JPG)"
+                onclick="openModal(4)"
+                onmouseover="hoverImage(4)"
+                onmouseout="hideCaption()"
+              ></div>
+              <div
+                class="img"
+                style="background-image: url(pokemon/5.JPG)"
+                onclick="openModal(5)"
+                onmouseover="hoverImage(5)"
+                onmouseout="hideCaption()"
+              ></div>
+              <div
+                class="img"
+                style="background-image: url(pokemon/6.jpg)"
+                onclick="openModal(6)"
+                onmouseover="hoverImage(6)"
+                onmouseout="hideCaption()"
+              ></div>
+              <div
+                class="img"
+                style="background-image: url(pokemon/7.jpg)"
+                onclick="openModal(7)"
+                onmouseover="hoverImage(7)"
+                onmouseout="hideCaption()"
+              ></div>
+              <div
+                class="img"
+                style="background-image: url(pokemon/8.JPG)"
+                onclick="openModal(8)"
+                onmouseover="hoverImage(8)"
+                onmouseout="hideCaption()"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== Mobile Slider ==================== -->
+<div class="mobile-slider">
+  <div class="mobile-img-container">
+    <div
+      class="mobile-img"
+      data-id="1"
+      onclick="openMobileModal(1)"
+      style="background-image: url(pokemon/1.jpg)"
+    >
+      <div class="mobile-caption">Event</div>
+    </div>
+    <div
+      class="mobile-img"
+      data-id="2"
+      onclick="openMobileModal(2)"
+      style="background-image: url(pokemon/2.jpg)"
+    >
+      <div class="mobile-caption">Giới Thiệu Dự Án</div>
+    </div>
+    <div
+      class="mobile-img"
+      data-id="3"
+      onclick="openMobileModal(3)"
+      style="background-image: url(pokemon/3.jpg)"
+    >
+      <div class="mobile-caption">Thành Tựu Nổi Bật</div>
+    </div>
+    <div
+      class="mobile-img"
+      data-id="4"
+      onclick="openMobileModal(4)"
+      style="background-image: url(pokemon/4.jpg)"
+    >
+      <div class="mobile-caption">Giới Thiệu Sự Kiện “35MM”</div>
+    </div>
+    <div
+      class="mobile-img"
+      data-id="5"
+      onclick="openMobileModal(5)"
+      style="background-image: url(pokemon/5.jpg)"
+    >
+      <div class="mobile-caption">Biểu Tượng</div>
+    </div>
+    <div
+      class="mobile-img"
+      data-id="6"
+      onclick="openMobileModal(6)"
+      style="background-image: url(pokemon/6.jpg)"
+    >
+      <div class="mobile-caption">Trải Nghiệm</div>
+    </div>
+    <div
+      class="mobile-img"
+      data-id="7"
+      onclick="openMobileModal(7)"
+      style="background-image: url(pokemon/7.jpg)"
+    >
+      <div class="mobile-caption">Thấy Hiện Tại Qua Lăng Kính Quá Khứ</div>
+    </div>
+    <div
+      class="mobile-img"
+      data-id="8"
+      onclick="openMobileModal(8)"
+      style="background-image: url(pokemon/8.jpg)"
+    >
+      <div class="mobile-caption">Thông Điệp</div>
+    </div>
+  </div>
+</div>
+
+<!-- ============= NEW CTA just under the sliders ============= -->
+        <div class="slider-cta">
+          <a
+            class="cta-btn cta-slider"
+            href="https://forms.gle/nj5XAaggqR2xyYnp8"
+            target="_blank"
+            >TICKETS</a
+          >
+        </div>
+        <!-- ==================== Modal ==================== -->
+        <div id="modal-container" class="modal-container" style="display: none;">
+          <div id="modalid" class="modalclass">
+            <img id="imgid" src="pokemon/1.jpg" alt="Modal Image" />
+            <div id="modal-description" class="modal-description">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== Speakers + Sponsors ==================== -->
+        <div class="sponsor-wrapper">
+          <div class="site-content">
+            <section id="speakers" class="speakers">
+              <h2>Meet Our Speakers</h2>
+              <div id="speaker-list" class="speaker-list"></div>
+            </section>
+
+            <section id="sponsors" class="sponsors">
+              <h2>Our Sponsors</h2>
+              <div id="sponsor-list" class="sponsor-list"></div>
+            </section>
+
+            <footer class="footer">
+              <div class="footer-content">
+                <p>&copy; 2025 TEDxYouthPTNK™. All Rights Reserved.</p>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

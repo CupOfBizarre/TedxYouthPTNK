@@ -1,0 +1,157 @@
+var slideData = {
+  "1": {
+    "caption": "Event",
+    "description": "TEDxYouth@PTNK 2025 trở lại với chủ đề “35MM” – một hành trình khai mở ký ức và kết nối thời gian qua ống kính phim hoài cổ. Lấy cảm hứng từ định dạng phim 35mm, sự kiện năm nay không chỉ mang tính nghệ thuật mà còn chứa đựng chiều sâu cảm xúc và góc nhìn mới mẻ về cuộc sống. Đây sẽ là nơi những câu chuyện, ý tưởng và khát vọng trẻ được thăng hoa trên sân khấu TEDx – nơi quá khứ, hiện tại và tương lai giao thoa qua từng khung hình.",
+    "image": "1.jpg"
+  },
+  "2": {
+    "caption": "Giới Thiệu Dự Án",
+    "description": "TEDxYouth@PTNK là một dự án phi lợi nhuận theo mô hình quốc tế của TED, trực thuộc trường Phổ thông Năng khiếu, ĐHQG-HCM. Trải qua 3 năm thành lập và 2 năm hoạt động, dự án của chúng em đã không ngừng nỗ lực và tổ chức thành công chuỗi sự kiện thường niên, nổi bật với hai chủ đề: Crystal Unclear năm 2023 và Treble Clef năm 2024.",
+    "image": "2.jpg"
+  },
+  "3": {
+    "caption": "Thành Tựu Nổi Bật",
+    "description": "Những thành tựu đáng chú ý bao gồm:\n• Thu hút hơn 200 người tham dự trong mỗi sự kiện, với phần lớn là học sinh cấp 3 tại TP. HCM.\n• Trở thành dự án đầu tiên thuộc trường công lập trên địa bàn TP.HCM được cấp quyền bởi TED.\n• Góp phần xây dựng một không gian khuyến khích tư duy cởi mở, thúc đẩy sáng tạo, và phát triển một cộng đồng học sinh năng động.",
+    "image": "3.jpg"
+  },
+  "4": {
+    "caption": "Giới Thiệu Sự Kiện “35MM”",
+    "description": "Với chủ đề \"35mm\" sẽ đưa mỗi người vào hành trình khám phá sự kết nối giữa quá khứ, hiện tại và tương lai thông qua lăng kính của ký ức, nghệ thuật và công nghệ.",
+    "image": "4.jpg"
+  },
+  "5": {
+    "caption": "Biểu Tượng",
+    "description": "Cùng hình ảnh phim 35mm – biểu tượng của những khoảnh khắc hoài niệm, sự kiện năm nay sẽ để mỗi người được phép nhìn lại quá khứ qua lăng kính xưa, dù đôi khi những ký ức ấy không hoàn toàn hoàn hảo.",
+    "image": "5.jpg"
+  },
+  "6": {
+    "caption": "Trải Nghiệm",
+    "description": "Chính những hình ảnh của máy ảnh và những bức ảnh hoài cổ, người tham dự sẽ khám phá sức mạnh của nostalgia (hoài niệm) và cách mà nó có thể ảnh hưởng đến góc nhìn của mỗi người.",
+    "image": "6.jpg"
+  },
+  "7": {
+    "caption": "Thấy Hiện Tại Qua Lăng Kính Quá Khứ",
+    "description": "Chính những điều đó cũng sẽ cho ta thấy về việc hãy học cách \"thấy\" hiện tại qua lăng kính của quá khứ – từ đó tìm ra giá trị và sự đẹp đẽ trong từng khoảnh khắc sống.",
+    "image": "7.jpg"
+  },
+  "8": {
+    "caption": "Thông Điệp",
+    "description": "Thông điệp cuối cùng là khuyến khích người tham dự dám chấp nhận sự thay đổi, trân trọng hiện tại, đồng thời không ngừng phát triển, học hỏi và trưởng thành, dù qua bất kỳ thời gian nào.",
+    "image": "8.jpg"
+  }
+};
+
+
+var modalContainer;
+var imageModal;
+var descriptionModal;
+
+/* ========================================
+   Modal dismiss (desktop)
+======================================== */
+window.onclick = function (event) {
+  if (event.target === modalContainer) {
+    modalContainer.style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+};
+
+/* ========================================
+   Desktop: open modal manually
+======================================== */
+function openModal(imgId) {
+  document.getElementById("caption").style.display = "none";
+  window.scrollTo(0, 0);
+  document.body.style.overflow = "hidden";
+
+  modalContainer.style.display = "flex";
+
+  imageModal.src = "pokemon/" + slideData[String(imgId)].image;
+  descriptionModal.innerText = slideData[String(imgId)].description;
+}
+
+/* Hover caption logic */
+function hoverImage(imgId) {
+  var caption = document.getElementById("caption");
+  caption.innerText = slideData[String(imgId)].caption;
+  caption.style.animation = "none";
+  caption.style.display = "block";
+  setTimeout(() => (caption.style.animation = "fadein 0.5s"), 100);
+}
+function hideCaption() {
+  document.getElementById("caption").style.display = "none";
+}
+
+function openMobileModal(imgId) {
+  const mobileImg = document.querySelector(`.mobile-img[data-id="${imgId}"]`);
+  if (!mobileImg) return;
+
+  // Get background-image URL
+  const bg = mobileImg.style.backgroundImage;
+
+  // Create overlay
+  const overlay = document.createElement("div");
+  overlay.className = "mobile-overlay";
+
+  // Create new div with background manually set
+  const expandedImg = document.createElement("div");
+  expandedImg.className = "expanded-zoom";
+  expandedImg.style.backgroundImage = bg;
+
+  // Create centered description text box
+  const captionBox = document.createElement("div");
+  captionBox.className = "mobile-caption";
+  captionBox.innerText = slideData[String(imgId)].description;
+
+  // Append caption inside image
+  expandedImg.appendChild(captionBox);
+  overlay.appendChild(expandedImg);
+  document.body.appendChild(overlay);
+
+  // Animate
+  requestAnimationFrame(() => overlay.classList.add("visible"));
+
+  // Dismiss on click
+  overlay.addEventListener("click", () => {
+    overlay.classList.remove("visible");
+    setTimeout(() => document.body.removeChild(overlay), 300);
+  });
+}
+
+
+/* ========================================
+   Dummy loaders
+======================================== */
+function loadSpeakers() {
+  const container = document.getElementById("speaker-list");
+  const coming = document.createElement("div");
+  coming.className = "speaker";
+  coming.innerHTML = "<h3>Coming Soon</h3>";
+  container.appendChild(coming);
+}
+
+function loadSponsors() {
+  const container = document.getElementById("sponsor-list");
+  const coming = document.createElement("div");
+  coming.className = "sponsor";
+  coming.innerHTML = "<h3>Coming Soon</h3>";
+  container.appendChild(coming);
+}
+
+/* ========================================
+   Init on Load
+======================================== */
+window.onload = function () {
+  loadSpeakers();
+  loadSponsors();
+
+  // Defer modal element bindings until DOM is loaded
+  modalContainer = document.getElementById("modal-container");
+  imageModal = document.getElementById("imgid");
+  descriptionModal = document.getElementById("modal-description");
+
+  // Fix: Ensure modal stays hidden initially
+  modalContainer.style.display = "none";
+  imageModal.src = ""; // Clear preloaded image
+  descriptionModal.innerText = ""; // Clear preloaded text
+};
