@@ -251,8 +251,16 @@ body {
 /* ---------- Slider CTA wrapper ---------- */
 .slider-cta {
   text-align: center;
-  margin: 1.2rem 0 2rem; /* mobile default */
+  margin-top: 20px; /* Adjusted spacing, remove negative margin if exists */
+  position: relative; /* Ensure relative positioning */
+  z-index: 1500; /* High enough to overlay other elements */
 }
+
+.ticket-btn {
+  position: relative;
+  z-index: 1600; /* Ensures it appears over the slider content */
+}
+
 .cta-slider {
   font-size: 1.6rem;
   font-family: "Cinzel", serif;
