@@ -29,11 +29,12 @@ var slideData = {
     "description": "Chính những hình ảnh của máy ảnh và những bức ảnh hoài cổ, người tham dự sẽ khám phá sức mạnh của nostalgia (hoài niệm) và cách mà nó có thể ảnh hưởng đến góc nhìn của mỗi người.",
     "image": "6.jpg"
   },
-  "7": {
-    "caption": "Thấy Hiện Tại Qua Lăng Kính Quá Khứ",
-    "description": "Chính những điều đó cũng sẽ cho ta thấy về việc hãy học cách \"thấy\" hiện tại qua lăng kính của quá khứ – từ đó tìm ra giá trị và sự đẹp đẽ trong từng khoảnh khắc sống.",
-    "image": "7.jpg"
-  },
+"7": {
+  "caption": "Thông Tin Event",
+  "description": "Địa điểm: 116-118 Nguyễn Thị Minh Khai, Bến Thành Ward, District 3, Ho Chi Minh City\n\nNgôn ngữ: Tiếng Anh\nThời gian sự kiện: 31/05/2025 16h đến 21h",
+  "image": "7.jpg"
+},
+
   "8": {
     "caption": "Thông Điệp",
     "description": "Thông điệp cuối cùng là khuyến khích người tham dự dám chấp nhận sự thay đổi, trân trọng hiện tại, đồng thời không ngừng phát triển, học hỏi và trưởng thành, dù qua bất kỳ thời gian nào.",
