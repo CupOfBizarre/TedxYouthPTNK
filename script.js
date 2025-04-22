@@ -31,7 +31,7 @@ var slideData = {
   },
 "7": {
   "caption": "Thông Tin Event",
-  "description": "Địa điểm: 116-118 Nguyễn Thị Minh Khai, Bến Thành Ward, District 3, Ho Chi Minh City\n\nNgôn ngữ: Tiếng Anh\nThời gian sự kiện: 31/05/2025 16h đến 21h",
+  "description": "Địa điểm: 116-118 Nguyễn Thị Minh Khai, Bến Thành Ward, District 3, Ho Chi Minh City\n\nNgôn ngữ: Tiếng Anh\n\nThời gian sự kiện: 31/05/2025 16h đến 21h",
   "image": "7.jpg"
 },
 
