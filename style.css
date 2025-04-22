@@ -159,6 +159,8 @@ body {
   align-items: center;
   height: 100vh;
   width: 100%;
+  padding-bottom:120px;
+  position: relative;
 }
 .img-parent {
   display: flex;
@@ -214,16 +216,17 @@ body {
 
 /* Hover caption – now deep‑brown like mobile version */
 .caption {
-  font-family: var(--font1); /* Lora, serif */
+  z-index: 1001; /* higher than slider */
+  position: absolute;
+  top: 300px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font1);
   background: var(--color3-light);
   color: var(--color4-accent);
   padding: 0.25rem 0.85rem;
   border-radius: 4px;
   font-size: 1.4rem;
-  position: absolute;
-  top: 300px;
-  left: 50%;
-  transform: translateX(-50%);
   animation: fadein 0.5s;
   display: none;
 }
@@ -251,9 +254,9 @@ body {
 /* ---------- Slider CTA wrapper ---------- */
 .slider-cta {
   text-align: center;
-  margin-top: 20px; /* Adjusted spacing, remove negative margin if exists */
+  margin-top: 0; /* Adjusted spacing, remove negative margin if exists */
   position: relative; /* Ensure relative positioning */
-  z-index: 1500; /* High enough to overlay other elements */
+  z-index: 10; /* High enough to overlay other elements */
 }
 
 .ticket-btn {
@@ -266,6 +269,7 @@ body {
   font-family: "Cinzel", serif;
   padding: 0.85rem 2.8rem;
   border-radius: 30px;
+  z-index: 11;
 }
 
 /* ========================================
@@ -353,13 +357,16 @@ body {
 }
 
 .mobile-slider .mobile-caption {
-  position: absolute;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  text-align: center;
-  font-family: "Federo", sans-serif;
+  font-family: var(--font1); /* Same as modal */
+  background-color: var(--color3-light);
   color: var(--color4);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  opacity: 1;
+  font-size: 0.85rem;
+  text-align: center;
 }
+
 .mobile-slider .mobile-img.zoom .mobile-caption {
   bottom: 10px;
   left: 50%;
@@ -479,30 +486,46 @@ body {
     background-blend-mode: multiply;
     position: static;
     box-shadow: none;
-    justify-content: center;
     width: 100%;
-    margin: 0 auto;
+    overflow: hidden;
   }
 
   .nav-links {
+    display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
-    flex-wrap: nowrap;
     justify-content: center;
-    gap: 1.2rem;
-    padding: 0.5rem 0;
-    font-size: 0.95rem;
-    width: max-content;
+    align-items: center;
+    width: 100%;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    text-align: center;
+  }
+
+  .nav-links li {
+    flex: 1 1 40%; /* Allows them to break into multiple rows responsively */
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-links a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
 
   .logo {
-    margin: 1rem auto 0.5rem;
+    margin: 0.5rem 0;
     display: flex;
     justify-content: center;
+    width: 100%;
   }
 
   .logo img {
     height: 50px;
   }
+}
 
   .nav-links li {
     flex-shrink: 0;
@@ -516,7 +539,7 @@ body {
     -ms-overflow-style: none; /* Hide scrollbar on IE and Edge */
     scrollbar-width: none; /* Hide scrollbar on Firefox */
   }
-}
+
 
 /* ---------- DESKTOP adjustment: 60 px gap below slider ---------- */
 @media (min-width: 768px) {
@@ -524,6 +547,7 @@ body {
     margin-top: -300px;
   }
 }
+
 
 /* — everything else (speakers, sponsors, footer,
      animations, responsive tweaks) stays unchanged — */
