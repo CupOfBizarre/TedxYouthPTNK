@@ -394,11 +394,28 @@ body {
 ======================================== */
 .sponsor-wrapper {
   width: 100%;
-  overflow: visible;
   background-color: transparent;
+  display: block;
 }
 
-.speakers,
+.speakers {
+  width: 100%;
+  padding: 60px 20px 40px;
+  background: url("Elements Bìa 35mm-16.png") center/cover no-repeat fixed;
+  background-color: rgba(255, 240, 220, 0.95);
+  display: block;
+}
+
+.speakers h2 {
+  font-family: "Cinzel", serif;
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: var(--color4-accent);
+  text-align: center;
+  animation: fadeSlideDown 0.8s ease-in-out;
+}
+
+
 .sponsors {
   padding: 50px 20px;
   background: url("Elements Bìa 35mm-16.png") center/cover no-repeat fixed;
@@ -406,7 +423,6 @@ body {
   margin-top: 20px;
 }
 
-.speakers h2,
 .sponsors h2 {
   font-family: "Cinzel", serif;
   font-size: 28px;
@@ -423,7 +439,28 @@ body {
   gap: 20px;
 }
 
-.speaker,
+.speaker {
+  width: 220px;
+  background-color: var(--color4);
+  border: 2px solid var(--color3-light);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.speaker:hover {
+  transform: scale(1.05);
+}
+
+.speaker img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center 30%;
+  transform: scale(1.1); /* 10% zoom in */}
+
 .sponsor {
   background-color: var(--color4);
   padding: 15px;
@@ -433,11 +470,27 @@ body {
   text-align: center;
 }
 
-.speaker img,
 .sponsor img {
-  width: 100%;
+  width: 110%;
+  height: 242px;
+  object-fit: cover;
+  object-position: center 30%;
   border-radius: 8px;
+  transform: translateX(-5%);
 }
+.speaker-name {
+  position: relative;
+  margin-top: 14px;
+  font-family: var(--font1); /* Lora */
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color3);
+  text-align: center;
+  line-height: 1.4;
+}
+
+
+
 
 /* ========================================
    Footer (unchanged)
