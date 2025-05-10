@@ -125,11 +125,36 @@ function openMobileModal(imgId) {
 ======================================== */
 function loadSpeakers() {
   const container = document.getElementById("speaker-list");
-  const coming = document.createElement("div");
-  coming.className = "speaker";
-  coming.innerHTML = "<h3>Coming Soon</h3>";
-  container.appendChild(coming);
+  container.innerHTML = ""; // Clear existing content
+
+  const speakers = [
+    { name: "Đăng Phúc", image: "speakers/speaker1.png" },
+    { name: "An Nhiên", image: "speakers/speaker2.png" },
+    { name: "Lily", image: "speakers/speaker3.png" },
+    { name: "Quang Khải", image: "speakers/speaker4.png" },
+    { name: "TS. Lưu Phúc Lợi", image: "speakers/speaker5.png" },
+    { name: "Sabrina Uyên Lưu", image: "speakers/speaker6.png" }
+  ];
+
+  speakers.forEach((speaker) => {
+    const div = document.createElement("div");
+    div.className = "speaker";
+
+    const img = document.createElement("img");
+    img.src = speaker.image;
+    img.alt = speaker.name;
+
+    const name = document.createElement("div");
+    name.className = "speaker-name";
+    name.textContent = speaker.name;
+    name.setAttribute("data-name", speaker.name);
+
+    div.appendChild(img);
+    div.appendChild(name);
+    container.appendChild(div);
+  });
 }
+
 
 function loadSponsors() {
   const container = document.getElementById("sponsor-list");
