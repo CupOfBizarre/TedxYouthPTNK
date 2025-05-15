@@ -43,6 +43,7 @@ var slideData = {
 };
 
 
+
 var modalContainer;
 var imageModal;
 var descriptionModal;
@@ -134,40 +135,56 @@ function loadSpeakers() {
 
 function loadSponsors() {
   const container = document.getElementById("sponsor-list");
+  if (!container) {
+    console.error("Sponsor container not found.");
+    return;
+  }
 
   const sponsors = [
     {
       name: "Sunrise Vietnam",
-      image: "428703998_796696539163781_8926338089730944409_n.jpg",
+      image: "sunrise.jpg",
       alt: "Sunrise Vietnam",
       link: "https://www.facebook.com/thaiduong.vietnam?locale=vi_VN",
-      position: "left",
+      position: "left"
     },
     {
       name: "YOLA",
-      image: "355661047_654765926693629_268896359613564457_n.png",
+      image: "yola.png",
       alt: "YOLA Education",
       link: "https://www.facebook.com/share/18nfpavSHu/?mibextid=wwXIfr",
-      position: "center",
+      position: "center"
     },
     {
       name: "American Study",
-      image: "475771635_1658971208158519_4366404568667915970_n.jpg",
+      image: "american_study.jpg",
       alt: "American Study",
       link: "https://www.facebook.com/americanstudy.vietnam/?locale=vi_VN",
-      position: "right",
-    },
+      position: "right"
+    }
   ];
 
   sponsors.forEach((sponsor) => {
+    console.log(`Rendering sponsor: ${sponsor.name}, using image: ${sponsor.image}`);
+
     const card = document.createElement("div");
-    card.className = `sponsor-card sponsor-${sponsor.position}`;
-    const imgTag = `<img src="${sponsor.image}" alt="${sponsor.alt}" />`;
+    card.classList.add("sponsor-card", `sponsor-${sponsor.position}`);
+
+    const img = document.createElement("img");
+    img.src = sponsor.image;
+    img.alt = sponsor.alt;
+    img.onload = () => console.log(`${sponsor.name} image loaded successfully.`);
+    img.onerror = () => console.error(`Image not found: ${img.src}`);
 
     if (sponsor.link) {
-      card.innerHTML = `<a href="${sponsor.link}" target="_blank" rel="noopener noreferrer">${imgTag}</a>`;
+      const anchor = document.createElement("a");
+      anchor.href = sponsor.link;
+      anchor.target = "_blank";
+      anchor.rel = "noopener noreferrer";
+      anchor.appendChild(img);
+      card.appendChild(anchor);
     } else {
-      card.innerHTML = imgTag;
+      card.appendChild(img);
     }
 
     container.appendChild(card);
@@ -183,6 +200,6 @@ window.onload = function () {
   descriptionModal = document.getElementById("modal-description");
 
   modalContainer.style.display = "none";
-  imageModal.src = ""; 
-  descriptionModal.innerText = ""; 
+  imageModal.src = "";
+  descriptionModal.innerText = "";
 };
