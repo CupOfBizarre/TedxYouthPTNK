@@ -47,9 +47,6 @@ var modalContainer;
 var imageModal;
 var descriptionModal;
 
-/* ========================================
-   Modal dismiss (desktop)
-======================================== */
 window.onclick = function (event) {
   if (event.target === modalContainer) {
     modalContainer.style.display = "none";
@@ -57,9 +54,6 @@ window.onclick = function (event) {
   }
 };
 
-/* ========================================
-   Desktop: open modal manually
-======================================== */
 function openModal(imgId) {
   document.getElementById("caption").style.display = "none";
   window.scrollTo(0, 0);
@@ -71,7 +65,6 @@ function openModal(imgId) {
   descriptionModal.innerText = slideData[String(imgId)].description;
 }
 
-/* Hover caption logic */
 function hoverImage(imgId) {
   var caption = document.getElementById("caption");
   caption.innerText = slideData[String(imgId)].caption;
@@ -87,46 +80,33 @@ function openMobileModal(imgId) {
   const mobileImg = document.querySelector(`.mobile-img[data-id="${imgId}"]`);
   if (!mobileImg) return;
 
-  // Get background-image URL
   const bg = mobileImg.style.backgroundImage;
 
-  // Create overlay
   const overlay = document.createElement("div");
   overlay.className = "mobile-overlay";
 
-  // Create new div with background manually set
   const expandedImg = document.createElement("div");
   expandedImg.className = "expanded-zoom";
   expandedImg.style.backgroundImage = bg;
 
-  // Create centered description text box
   const captionBox = document.createElement("div");
   captionBox.className = "mobile-caption";
   captionBox.innerText = slideData[String(imgId)].description;
 
-  // Append caption inside image
   expandedImg.appendChild(captionBox);
   overlay.appendChild(expandedImg);
   document.body.appendChild(overlay);
 
-  // Animate
   requestAnimationFrame(() => overlay.classList.add("visible"));
 
-  // Dismiss on click
   overlay.addEventListener("click", () => {
     overlay.classList.remove("visible");
     setTimeout(() => document.body.removeChild(overlay), 300);
   });
 }
 
-
-/* ========================================
-   Dummy loaders
-======================================== */
 function loadSpeakers() {
   const container = document.getElementById("speaker-list");
-  container.innerHTML = ""; // Clear existing content
-
   const speakers = [
     { name: "Đăng Phúc", image: "speakers/speaker1.png" },
     { name: "An Nhiên", image: "speakers/speaker2.png" },
@@ -137,47 +117,72 @@ function loadSpeakers() {
   ];
 
   speakers.forEach((speaker) => {
-    const div = document.createElement("div");
-    div.className = "speaker";
-
-    const img = document.createElement("img");
-    img.src = speaker.image;
-    img.alt = speaker.name;
-
-    const name = document.createElement("div");
-    name.className = "speaker-name";
-    name.textContent = speaker.name;
-    name.setAttribute("data-name", speaker.name);
-
-    div.appendChild(img);
-    div.appendChild(name);
-    container.appendChild(div);
+    const box = document.createElement("div");
+    box.className = "speaker-box";
+    box.innerHTML = `
+      <div class="speaker-img-wrapper">
+        <img src="${speaker.image}" alt="${speaker.name}" class="speaker-img"/>
+      </div>
+      <div class="speaker-name">
+        <span class="main-text">${speaker.name}</span>
+      </div>
+    `;
+    container.appendChild(box);
   });
 }
 
 
 function loadSponsors() {
   const container = document.getElementById("sponsor-list");
-  const coming = document.createElement("div");
-  coming.className = "sponsor";
-  coming.innerHTML = "<h3>Coming Soon</h3>";
-  container.appendChild(coming);
+
+  const sponsors = [
+    {
+      name: "Sunrise Vietnam",
+      image: "428703998_796696539163781_8926338089730944409_n.jpg",
+      alt: "Sunrise Vietnam",
+      link: "https://www.facebook.com/thaiduong.vietnam?locale=vi_VN",
+      position: "left",
+    },
+    {
+      name: "YOLA",
+      image: "355661047_654765926693629_268896359613564457_n.png",
+      alt: "YOLA Education",
+      link: "https://www.facebook.com/share/18nfpavSHu/?mibextid=wwXIfr",
+      position: "center",
+    },
+    {
+      name: "American Study",
+      image: "475771635_1658971208158519_4366404568667915970_n.jpg",
+      alt: "American Study",
+      link: "https://www.facebook.com/americanstudy.vietnam/?locale=vi_VN",
+      position: "right",
+    },
+  ];
+
+  sponsors.forEach((sponsor) => {
+    const card = document.createElement("div");
+    card.className = `sponsor-card sponsor-${sponsor.position}`;
+    const imgTag = `<img src="${sponsor.image}" alt="${sponsor.alt}" />`;
+
+    if (sponsor.link) {
+      card.innerHTML = `<a href="${sponsor.link}" target="_blank" rel="noopener noreferrer">${imgTag}</a>`;
+    } else {
+      card.innerHTML = imgTag;
+    }
+
+    container.appendChild(card);
+  });
 }
 
-/* ========================================
-   Init on Load
-======================================== */
 window.onload = function () {
   loadSpeakers();
   loadSponsors();
 
-  // Defer modal element bindings until DOM is loaded
   modalContainer = document.getElementById("modal-container");
   imageModal = document.getElementById("imgid");
   descriptionModal = document.getElementById("modal-description");
 
-  // Fix: Ensure modal stays hidden initially
   modalContainer.style.display = "none";
-  imageModal.src = ""; // Clear preloaded image
-  descriptionModal.innerText = ""; // Clear preloaded text
+  imageModal.src = ""; 
+  descriptionModal.innerText = ""; 
 };
