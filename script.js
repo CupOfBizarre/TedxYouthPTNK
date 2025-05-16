@@ -133,68 +133,9 @@ function loadSpeakers() {
 }
 
 
-function loadSponsors() {
-  const container = document.getElementById("sponsor-list");
-  if (!container) {
-    console.error("Sponsor container not found.");
-    return;
-  }
-
-  const sponsors = [
-    {
-      name: "Sunrise Vietnam",
-      image: "sunrise.jpg",
-      alt: "Sunrise Vietnam",
-      link: "https://www.facebook.com/thaiduong.vietnam?locale=vi_VN",
-      position: "left"
-    },
-    {
-      name: "YOLA",
-      image: "yola.png",
-      alt: "YOLA Education",
-      link: "https://www.facebook.com/share/18nfpavSHu/?mibextid=wwXIfr",
-      position: "center"
-    },
-    {
-      name: "American Study",
-      image: "american_study.jpg",
-      alt: "American Study",
-      link: "https://www.facebook.com/americanstudy.vietnam/?locale=vi_VN",
-      position: "right"
-    }
-  ];
-
-  sponsors.forEach((sponsor) => {
-    console.log(`Rendering sponsor: ${sponsor.name}, using image: ${sponsor.image}`);
-
-    const card = document.createElement("div");
-    card.classList.add("sponsor-card", `sponsor-${sponsor.position}`);
-
-    const img = document.createElement("img");
-    img.src = sponsor.image;
-    img.alt = sponsor.alt;
-    img.onload = () => console.log(`${sponsor.name} image loaded successfully.`);
-    img.onerror = () => console.error(`Image not found: ${img.src}`);
-
-    if (sponsor.link) {
-      const anchor = document.createElement("a");
-      anchor.href = sponsor.link;
-      anchor.target = "_blank";
-      anchor.rel = "noopener noreferrer";
-      anchor.appendChild(img);
-      card.appendChild(anchor);
-    } else {
-      card.appendChild(img);
-    }
-
-    container.appendChild(card);
-  });
-}
-
 window.onload = function () {
   loadSpeakers();
-  loadSponsors();
-
+  
   modalContainer = document.getElementById("modal-container");
   imageModal = document.getElementById("imgid");
   descriptionModal = document.getElementById("modal-description");
